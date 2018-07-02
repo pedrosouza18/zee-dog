@@ -13,7 +13,7 @@ class LookBooksController {
     }
 
     _loadLookBooks() {
-        return fetch('https://api.jsonbin.io/b/5b3676c5efaed72daeed6e51')
+        return fetch('https://api.jsonbin.io/b/5b3a2585a5a2f34ea6b0f524')
             .then(data => data.json())
     }
 
@@ -45,12 +45,10 @@ class LookBooksController {
         }
     }
 
-    openBook(idBook) {
+    openBook(idBook, index) {
         const book = document.getElementById(idBook);
         const btnClose = book.getElementsByClassName('btn-fechar')[0];
-
         this._message.style.display = 'block';
-
         const list = book.getElementsByTagName('ul')[0];
 
         list.style.display = 'block';
@@ -65,12 +63,24 @@ class LookBooksController {
         });
 
         window.onscroll = function () {
-            if(window.getComputedStyle(list).display === 'block') {
-                btnClose.classList.add("btn-fixo");
-                if(window.scrollY >= book.offsetHeight) {
-                    btnClose.classList.remove("btn-fixo");
-                    btnClose.style.display = 'block';
-                }
+            if (window.getComputedStyle(list).display === 'block') {
+                setTimeout(function () {
+                    btnClose
+                        .classList
+                        .add("btn-fixo");
+
+                    const scroll = window.scrollY || window.pageYOffset
+                    const boundsTop = book
+                        .getBoundingClientRect()
+                        .top + scroll;
+
+                    if ((scroll + window.innerHeight) >= (boundsTop + book.clientHeight)) {
+                        btnClose
+                            .classList
+                            .remove("btn-fixo");
+                        btnClose.style.display = 'block';
+                    }
+                }, 100);
             }
         }
 

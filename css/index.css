@@ -15,7 +15,6 @@ ul {
 
 html {
     color: #61666a;
-    /* font-family: 'Lato','Arial',sans-serif; */
     font-family: 'PT Sans', sans-serif;
     font-weight: 300;
     font-size: 10px;
@@ -63,13 +62,30 @@ html {
     width: 100%;
 }
 .header-frete__icone {
-    padding: 6px 5px 0 0;
     border-bottom: 4px solid #48b7a6;
     margin-right: 5px;
+    position: relative;
 }
-.header-frete__icone i {
-    font-size: 160%;
+.header-frete__icone::after {
+    content: 'Acima de R$169 o frete é gratis!';
+    text-transform: uppercase;
+    position: absolute;
+    left: -210px;
+    top: 3px;
+    font-size: 120%;
+    width: 190px;
+    padding: 8px;
     color: #fff;
+    background: #000;
+    opacity: 0;
+    transition: opacity .3s;
+}
+.header-frete__icone:hover::after {
+    opacity: .9;
+}
+.header-frete__icone svg {
+    width: 30px;
+    height: 30px;
 }
 
 .header-menu-perfil {
@@ -133,6 +149,7 @@ html {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0 15px;
+    cursor: auto;
 }
 .nav-menu__item:nth-child(2) {
     font-weight: bold;
@@ -264,7 +281,7 @@ html {
     margin: 0 auto;
 }
 .rodape__coluna--titulo {
-    font-size: 180%;
+    font-size: 10%;
     margin-bottom: 10px;
     margin-top: 1em;
     letter-spacing: .5px;
@@ -279,6 +296,18 @@ html {
 }
 .rodape__coluna--lista__sociais li {
     flex: 1;
+}
+.rodape__coluna__icones {
+    height: 13px;
+}
+.rodape__coluna__facebook {
+    width: 7px;
+}
+.rodape__coluna__pinterest {
+    width: 10px;
+}
+.rodape__coluna__vimeo {
+    width: 16px;
 }
 .rodape__coluna--lista li {
     margin-bottom: 7px;
@@ -349,6 +378,12 @@ html {
 .logo-figure {
     margin-bottom: 20px;
     margin-top: -20px;
+    text-align: center;
+}
+.logo-figure__texto,
+.logo-figure__imagem,
+.logo-figure__titulo {
+    fill: #fff;
 }
 .rodape-linha3__texto {
     text-align: justify;
@@ -383,9 +418,10 @@ html {
 .rodape__colunas--linha4 figure {
     text-align: center;
 }
-.rodape__colunas--linha4 figure img {
+.rodape__colunas--linha4__pagamentos {
+    height: 100%;
+    width: 100%;
     max-width: 300px;
-    height: 35px;
 }
 
 .rodape__colunas--linha5 {
@@ -532,14 +568,16 @@ html {
 }
 
 .loader {
-    width: 40px;
-    height: 40px;
-    border: 6px solid #48b7a8;
+    width: 35px;
+    height: 35px;
+    border: 4px solid rgba(128, 128, 128, 0.47);
     border-radius: 50%;
-    border-right: 6px solid rgba(128, 128, 128, 0.47);
+    border-right: 4px solid rgba(192, 188, 188, 0);
+    border-left: 4px solid rgba(192, 188, 188, 0);
+    border-bottom: 4px solid rgba(192, 188, 188, 0);
     display: block;
     margin: 10px auto;
-    animation: loader .7s linear infinite;
+    animation: loader .9s linear infinite;
 }
 
 @keyframes loader {
@@ -601,7 +639,7 @@ html {
     font-weight: 300;
 }
 .nav-menu__subitem--star a:hover {
-    color: #f0d300 !important;
+    color: #f0d300;
 }
 .camas {
     background: url('../img/menu-sprite-imgs-3.jpg') no-repeat -201px -611px;
@@ -717,7 +755,7 @@ html {
     left: -87px;
     top: 0;
     display: flex;
-    background: grey;
+    background: #000;
     width: 82px;
     height: 29px;
     border-radius: 5px;
@@ -730,5 +768,5 @@ html {
     transition: opacity .3s;
 }
 .btn-top:hover::after {
-    opacity: .8;
+    opacity: .9;
 }
