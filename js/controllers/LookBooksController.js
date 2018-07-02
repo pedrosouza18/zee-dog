@@ -45,7 +45,7 @@ class LookBooksController {
         }
     }
 
-    openBook(idBook, index) {
+    openBook(idBook) {
         const book = document.getElementById(idBook);
         const btnClose = book.getElementsByClassName('btn-fechar')[0];
         this._message.style.display = 'block';
