@@ -37,7 +37,7 @@ class LookBooksController {
         const btnTop = document.querySelector('.btn-top');
 
         window.onscroll = function () {
-            if(window.scrollY > 200) {
+            if(window.scrollY || window.pageYOffset > 200) {
                 btnTop.style.display = 'block';
             } else {
                 btnTop.style.display = 'none';
